@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { FaAngellist } from "react-icons/fa";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className='bg-slate-200'>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -16,6 +17,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          <FaAngellist />
         </a>
       </header>
     </div>

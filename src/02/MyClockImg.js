@@ -1,4 +1,4 @@
-import clock from '../clock2.png'
+import clock from '../img/clock2.png'
 
 function MyClockImg() {
    return(

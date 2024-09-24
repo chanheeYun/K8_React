@@ -3,7 +3,8 @@ import home from './img/lime_home.png';
 // import Hello from './01/Hello';
 // import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv1';
-import MyList from './04/MyList';
+// import MyList from './04/MyList';
+import Lotto from './05/Lotto';
 function App() {
   return (
     <div className='w-full xl:w-10/12 h-screen mx-auto
@@ -20,12 +21,15 @@ function App() {
                         flex flex-col justify-center items-center
                         overflow-y-auto'>
         {/* <MyDiv1 /> */}
-        <MyList />
+        {/* <MyList /> */}
+        <Lotto />
       </main>
       <footer className='w-full h-20
                           flex justify-center items-center
                           bg-green-950 text-white'>
-        <p>K-DIGIPAL 윤찬희</p>
+        <p className='foot text-yellow-100'>
+          K-DIGIPAL 윤찬희
+        </p>
       </footer>
     </div>
   );

@@ -27,10 +27,10 @@ function App() {
         {/* <Lotto /> */}
         <FoodMain />
       </main>
-      <footer className='w-full h-20
+      <footer className='w-full h-20 mt-2
                           flex justify-center items-center
-                          bg-green-950 text-white'>
-        <p className='foot text-yellow-100'>
+                          bg-green-950'>
+        <p className='foot text-yellow-100 my-4'>
           K-DIGIPAL 윤찬희
         </p>
       </footer>

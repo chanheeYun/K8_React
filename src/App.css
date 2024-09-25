@@ -67,6 +67,10 @@
   font-family: 'GeekbleMalang2WOFF2';
 }
 
+.lottoNum {
+  text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+}
+
 @font-face {
   font-family: 'NanumSquareRound';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');

@@ -4,7 +4,9 @@ import home from './img/lime_home.png';
 // import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv1';
 // import MyList from './04/MyList';
-import Lotto from './05/Lotto';
+// import Lotto from './05/Lotto';
+import FoodMain from './06/FoodMain';
+
 function App() {
   return (
     <div className='w-full xl:w-10/12 h-screen mx-auto
@@ -22,7 +24,8 @@ function App() {
                         overflow-y-auto'>
         {/* <MyDiv1 /> */}
         {/* <MyList /> */}
-        <Lotto />
+        {/* <Lotto /> */}
+        <FoodMain />
       </main>
       <footer className='w-full h-20
                           flex justify-center items-center

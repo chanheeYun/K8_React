@@ -1,11 +1,7 @@
 import { useState } from 'react';
 
-export default function TailBall({num}) {
-  const [n, setN] = useState();
-
-  const lotto = () => {
-    setN(num);
-  }
+export default function TailBall({n}) {
+  const [num, setNum] = useState(n);
 
   const ballColor = {
     'b0': 'bg-red-400',
@@ -18,11 +14,11 @@ export default function TailBall({num}) {
   return (
     <div className={`w-16 h-16 m-2
                   flex justify-center items-center
-                  rounded-full ${ballColor['b' + Math.floor(n / 10)]}
-                  text-gray-800
-                  font-bold text-3xl
+                  rounded-full ${ballColor['b' + Math.floor(num / 10)]}
+                  text-white
+                  font-bold text-3xl lottoNum
                   `}>
-      {n}
+      {num}
     </div>
   )
 }

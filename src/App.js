@@ -1,11 +1,11 @@
 import './App.css';
 import home from './img/lime_home.png';
 // import Hello from './01/Hello';
-// import MyClock from './02/MyClock';
+import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv1';
 // import MyList from './04/MyList';
 // import Lotto from './05/Lotto';
-import FoodMain from './06/FoodMain';
+// import FoodMain from './06/FoodMain';
 
 function App() {
   return (
@@ -22,10 +22,11 @@ function App() {
       <main className='w-full grow
                         flex flex-col items-center
                         overflow-y-auto'>
+        <MyClock />
         {/* <MyDiv1 /> */}
         {/* <MyList /> */}
         {/* <Lotto /> */}
-        <FoodMain />
+        {/* <FoodMain /> */}
       </main>
       <footer className='w-full h-20 mt-2
                           flex justify-center items-center

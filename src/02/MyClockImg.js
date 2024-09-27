@@ -2,7 +2,9 @@ import clock from '../img/clock2.png'
 
 function MyClockImg() {
    return(
-      <img src={clock} className='clock' alt='clock' />
+      <div className='w-full flex justify-center items-center'>
+         <img src={clock} className='w-60 h-60 mt-12 mb-9 clock' alt='clock' />
+      </div>
    );
 }
 

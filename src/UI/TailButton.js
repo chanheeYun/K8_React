@@ -11,7 +11,7 @@ export default function TailButton({caption, color, handleClick}) {
   };
 
   return (
-    <button className={`inline-flex justify-center items-center
+    <button className={`w-36 min-w-max inline-flex justify-center items-center
                       p-3 mx-2 ${btColor[color]} text-white
                       rounded-md ${btColorHover[color]}
                       font-bold`} 

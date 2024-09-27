@@ -7,19 +7,18 @@ import { useState } from 'react';
 export default function FoodCard({div, busiName, operName, address, contact}) {
   const [con, setCon] = useState('');
 
-  let flag = true;
-
   const contactView = () => {
-    if (flag) {
-      setCon(`대표번호 : ${contact}`);
-      flag = false;
-    } else {
-      setCon('');
-      flag = true;
-    }
+    if (con === '') setCon(`대표번호 : ${contact}`);
+    else setCon('');
   };
 
-  const imgDist = {
+  // const [isShow, setIsShow] = useState(false);
+
+  // const handleClick = () => {
+  //   setIsShow(!isShow)
+  // };
+
+  const imgObj = {
     "광역지원센터" : busan,
     "기초푸드뱅크" : bank, 
     "기초푸드마켓" : market
@@ -28,7 +27,7 @@ export default function FoodCard({div, busiName, operName, address, contact}) {
   return (
     <div className='w-auto h-30 p-2 flex border'>
       <div className='w-1/4 flex justify-center items-center'>
-        <img src={imgDist[div]} alt={div} />
+        <img src={imgObj[div]} alt={div} />
       </div>
       <div className='w-3/4 p-3 
                       flex flex-col justify-center items-start'>
@@ -42,8 +41,12 @@ export default function FoodCard({div, busiName, operName, address, contact}) {
           {address}
         </div>
         <div className='w-full h-5 py-0.5
-                        text-xs indent-1 text-white bg-slate-500' onClick={contactView}>
+                        text-xs indent-1 text-gray-500 bg-slate-300' onClick={contactView}>
           <span className='inline-flex' onClick={contactView}>{con}</span>
+        {/* <div className='w-full h-5 py-0.5
+                        text-xs indent-1 text-white bg-slate-500' onClick={handleClick}> */}
+          {/* {isShow ? contact : ''} */}
+          {/* {isShow && contact} &&연산자 사용 */}
         </div>
       </div>
     </div>

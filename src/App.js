@@ -20,7 +20,7 @@ function App() {
         <p><img className='w-16 h-16' src={home} alt='home' /></p>
       </header>
       <main className='w-full grow
-                        flex flex-col justify-center items-center
+                        flex flex-col items-center
                         overflow-y-auto'>
         {/* <MyDiv1 /> */}
         {/* <MyList /> */}

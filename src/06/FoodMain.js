@@ -27,7 +27,7 @@ export default function FoodMain() {
                                     address={item['사업장 소재지']} contact={item['연락처(대표번호)']} />);
   
   useEffect(() => {    
-      setTags(tm);
+    setTags(tm);
   }, []);
   // console.log(tm)
   // setTags(tm);

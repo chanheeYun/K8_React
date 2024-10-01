@@ -6,7 +6,9 @@ import home from './img/lime_home.png';
 // import MyList from './04/MyList';
 // import Lotto from './05/Lotto';
 // import FoodMain from './06/FoodMain';
-import BoxOffice from './07/BoxOffice';
+// import BoxOffice from './07/BoxOffice';
+import MyBox from './08/MyBox';
+
 function App() {
   return (
     <div className='w-full xl:w-10/12 h-screen mx-auto
@@ -27,7 +29,8 @@ function App() {
         {/* <MyList /> */}
         {/* <Lotto /> */}
         {/* <FoodMain /> */}
-        <BoxOffice />
+        {/* <BoxOffice /> */}
+        <MyBox />
       </main>
       <footer className='w-full h-28 mt-2
                           flex justify-center items-center

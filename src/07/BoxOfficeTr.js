@@ -9,10 +9,10 @@ export default function BoxOfficeTr({mv, handleClick}) {
         {mv.movieNm}
       </td>
       <td className="px-6 py-4 text-right">
-        ￦{parseInt(mv.salesAmt).toLocaleString('ko-KR')}
+        {Math.floor((parseInt(mv.salesAcc))/1000000).toLocaleString('ko-KR')}백만원
       </td>
       <td className="px-6 py-4 text-right">
-        {parseInt(mv.audiCnt).toLocaleString('ko-KR')}명
+        {parseInt(mv.audiAcc).toLocaleString('ko-KR')}명
       </td>
       <td className="px-6 py-4 text-center text-sm">
         {mv.rankInten > 0 ? <span className='text-red-600 pr-0.5'>▲</span> :

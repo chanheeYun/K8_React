@@ -8,20 +8,27 @@ export default function MyBoxBox({color}) {
   const colorObj = {
     'blue' : {
       'bg300' : 'bg-blue-300',
-      'bg50' : 'bg-blue-50',
+      'bg100' : 'bg-blue-100',
       'bdr700' : 'border-blue-700',
     },
     'orange' : {
       'bg300' : 'bg-orange-300',
-      'bg50' : 'bg-orange-50',
+      'bg100' : 'bg-orange-100',
       'bdr700' : 'border-orange-700',
+    },
+    'amber' : {
+      'bg300' : 'bg-amber-300',
+      'bg100' : 'bg-amber-100',
+      'bdr700' : 'border-amber-700',
     },
     'lime' : {
       'bg300' : 'bg-lime-300',
-      'bg50' : 'bg-lime-50',
-      'bdr700' : 'border-lime-700',
+      'bg100' : 'bg-lime-100',
+      'bdr600' : 'border-lime-600',
     },
   };
+
+  const obj = colorObj[color];
 
   const handleClick = () => {
     setFlag(!flag);
@@ -32,10 +39,10 @@ export default function MyBoxBox({color}) {
   }, [flag]);
 
   return (
-    <div className={`w-5/12 h-60 p-5 m-5 ${flag ? `bg-${color}-200` : ''}
+    <div className={`w-10/12 h-60 p-5 ${flag ? obj['bg300'] : ''}
                     flex flex-col justify-center items-center`}>
-      <MyBoxBoxH1 color={color}/>
-      <MyBoxBoxToggle color={color} toggleClick={handleClick} />
+      <MyBoxBoxH1 color={color} />
+      <MyBoxBoxToggle color={color} obj={obj} toggleClick={handleClick} />
     </div>
   )
 }

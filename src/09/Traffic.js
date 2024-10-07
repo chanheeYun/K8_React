@@ -53,6 +53,7 @@ export default function Traffic() {
     
     setC2(tm);
     console.log('c2', c2)
+    setInfo('');
   }, [selC1]);
 
   //사고유형 선택
@@ -72,11 +73,11 @@ export default function Traffic() {
 
   return (
     <div className='w-full h-screen flex flex-col justify-start items-center'>
-      <div className='w-11/12 flex flex-col justify-center item-center'>
+      <div className='w-10/12 flex flex-col justify-center item-center'>
         {c1 && <TrafficNav div='대분류' c={c1} sel={selC1} setSel={setSelC1} />}
         {c2 && <TrafficNav div='사고유형' c={c2} sel={selC2} setSel={setSelC2}/>}
       </div>
-      <div className='w-11/12 px-1 mt-5 flex flex-col justify-between items-center'>
+      <div className='w-10/12 px-1 mt-5 flex flex-col justify-between items-center'>
         {info}
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function TrafficNav({div, c, sel, setSel}) {
     <div className='w-full p-2 m-1
                     flex justify-between items-center
                     '>
-      <div className='w-1/4 text-2xl font-bold
+      <div className='w-1/4 text-3xl font-bold
                       flex justify-start items-center'>
         교통사고 {div}
       </div>

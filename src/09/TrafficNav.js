@@ -7,6 +7,7 @@ export default function TrafficNav({div, c, sel, setSel}) {
                                 key={item}
                                 caption={item}
                                 color={item == sel ? 'red' : 'green'}
+                                size='w-auto'
                                 handleClick={() => setSel(item)} />
   );
 

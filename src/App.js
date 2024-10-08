@@ -6,10 +6,11 @@ import home from './img/lime_home.png';
 // import MyList from './04/MyList';
 // import Lotto from './05/Lotto';
 // import FoodMain from './06/FoodMain';
-import BoxOffice from './07/BoxOffice';
+// import BoxOffice from './07/BoxOffice';
 // import MyBox from './08/MyBox';
 // import Traffic from './09/Traffic';
 // import MyRef from './10/MyRef';
+import Gallery from './11/Gallery';
 
 function App() {
   return (
@@ -24,17 +25,18 @@ function App() {
         <p><img className='w-20 h-20' src={home} alt='home' /></p>
       </header>
       <main className='w-full grow
-                        flex flex-col items-center justify-center
+                        flex flex-col items-center 
                         overflow-y-auto'>
         {/* <MyClock /> */}
         {/* <MyDiv1 /> */}
         {/* <MyList /> */}
         {/* <Lotto /> */}
         {/* <FoodMain /> */}
-        <BoxOffice />
+        {/* <BoxOffice /> */}
         {/* <MyBox /> */}
         {/* <Traffic /> */}
         {/* <MyRef /> */}
+        <Gallery />
       </main>
       <footer className='w-full h-28 mt-2
                           flex justify-center items-center

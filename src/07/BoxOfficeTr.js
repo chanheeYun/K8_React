@@ -5,14 +5,14 @@ export default function BoxOfficeTr({mv, handleClick}) {
       <td scope="row" className="px-6 py-4 font-medium text-gray-900 text-center">
         {mv.rank}
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-base">
+      <td className="pl-8 py-4 whitespace-nowrap text-base">
         {mv.movieNm}
       </td>
-      <td className="px-6 py-4 text-right">
-        {Math.floor((parseInt(mv.salesAcc))/1000000).toLocaleString('ko-KR')}백만원
+      <td className="pr-16 py-4 text-right">
+        {Math.floor((parseInt(mv.salesAmt))/10000).toLocaleString('ko-KR')}만원
       </td>
-      <td className="px-6 py-4 text-right">
-        {parseInt(mv.audiAcc).toLocaleString('ko-KR')}명
+      <td className="pr-9 py-4 text-right">
+        {parseInt(mv.audiCnt).toLocaleString('ko-KR')}명
       </td>
       <td className="px-6 py-4 text-center text-sm">
         {mv.rankInten > 0 ? <span className='text-red-600 pr-0.5'>▲</span> :

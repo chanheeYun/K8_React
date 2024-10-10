@@ -2,10 +2,6 @@
   font-family: 'EF_jejudoldam';
 }
 
-.card {
-  height: 500px;
-}
-
 @font-face {
   font-family: 'EF_jejudoldam';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');

@@ -1,6 +1,7 @@
 import defaultImg from '../img/image_coming_soon.png'
+import './TailCard.css'
 
-export default function TailCard({ imgUrl, title, content, kw }) {
+export default function TailCard({ imgUrl, title, content, kw, date}) {
   const mksTag = (str) => {
     if (str === '') return str;
     if (str.includes(',')) {
@@ -15,6 +16,7 @@ export default function TailCard({ imgUrl, title, content, kw }) {
   // const kws = kw.includes(',') ? kw.split(',') : [kw];
   // const kwTags = kws.map(item => <span className='inline-flex bg-slate-200 p-1 m-1 rounded-xl text-xs'>
   //                                 {item}</span>);
+  
   const kwTags = mksTag(kw);
 
   const handleImgError = (e) => {
@@ -28,13 +30,16 @@ export default function TailCard({ imgUrl, title, content, kw }) {
         <img className="rounded-t-lg w-full h-full object-cover" src={imgUrl} onError={handleImgError} alt='이미지' />
       </div>
       <div className="p-5 h-1/2">
-        <h1 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+        <h1 className="title mb-0.5 text-2xl font-bold tracking-tight text-gray-900">
           {title}
         </h1>
-        <p className="mb-3 font-normal text-gray-700">
+        <p className='content mb-3 text-sm indent-0.5'>
+          {date}
+        </p>
+        <p className="content h-1/4 font-normal indent-0.5 text-gray-700">
           {content}
         </p>
-        <p className='inline-flex flex-wrap mt-3'>
+        <p className='content inline-flex flex-wrap mt-3'>
           {kwTags}
         </p>
         {/* <p className="inline-flex items-center px-3 py-2 text-sm font-medium text-center 

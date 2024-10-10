@@ -10,7 +10,8 @@ import home from './img/lime_home.png';
 // import MyBox from './08/MyBox';
 // import Traffic from './09/Traffic';
 // import MyRef from './10/MyRef';
-import Gallery from './11/Gallery';
+// import Gallery from './11/Gallery';
+import Festival from './12/Festival';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         </p>
         <p><img className='w-20 h-20' src={home} alt='home' /></p>
       </header>
-      <main className='w-full grow
+      <main className='w-full flex-grow
                         flex flex-col items-center 
                         overflow-y-auto'>
         {/* <MyClock /> */}
@@ -36,9 +37,10 @@ function App() {
         {/* <MyBox /> */}
         {/* <Traffic /> */}
         {/* <MyRef /> */}
-        <Gallery />
+        {/* <Gallery /> */}
+        <Festival />
       </main>
-      <footer className='w-full h-28 mt-2
+      <footer className='w-full h-28 mt-2 flex-shrink-0
                           flex justify-center items-center
                           bg-green-950'>
         <p className='foot text-2xl text-yellow-100 my-4'>

@@ -9,8 +9,8 @@ export default function Gallery() {
 
   const searchRef = useRef();
 
-  const getFetchData = () => {
-    if (searchRef.current.value === '') return;
+  const getFetchData = async () => {
+    
     const apiKey = process.env.REACT_APP_API_KEY;
     const enSearch = encodeURIComponent(searchRef.current.value)
 
@@ -18,24 +18,42 @@ export default function Gallery() {
     url += `?serviceKey=${apiKey}&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${enSearch}&_type=json`;
     console.log(url)
 
-    fetch(url)
-      .then(resp => resp.json())
-      .then(data => {
-        console.log(data["response"]["body"]["items"]["item"])
-        setGData(data["response"]["body"]["items"]["item"]);
-      })
-      .catch(err => console.log(err))
-      ;
+    // fetch(url)
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //     console.log(data["response"]["body"]["items"]["item"])
+    //     if (data["response"]["body"]["totalCount"] === 0) {
+    //       setTags(`${searchRef.currnet.value}에 대한 검색 결과가 없습니다.`)
+    //     }
+    //     setGData(data["response"]["body"]["items"]["item"]);
+    //   })
+    //   .catch(err => console.log(err))
+    //   ;
+
+    const resp = await fetch(url); //resp가 오기 전에는 다른 일을 하지 않음
+    const data = await resp.json();
+    // console.log(data)
+    if (data["response"]["body"]["totalCount"] === 0) {
+      setTags(<h1 className='pl-10 text-3xl text-nowrap font-semibold'>"{searchRef.current.value}"에 대한 검색 결과가 없습니다.</h1>)
+    } else {
+      setGData(data["response"]["body"]["items"]["item"]);
+    }
     console.log(gData)
   };
 
   const okClick = () => {
+    if (searchRef.current.value === '') {
+      alert('검색어를 입력하세요.');
+      searchRef.current.focus();
+      return;
+    }
     getFetchData();
   };
 
   const cancleClick = () => {
     searchRef.current.value = '';
     searchRef.current.focus();
+    setTags([]);
   };
 
   useEffect(() => {
@@ -48,7 +66,8 @@ export default function Gallery() {
                                           imgUrl={item.galWebImageUrl}
                                           title={item.galTitle}
                                           content={item.galPhotographyLocation}
-                                          kw={item.galSearchKeyword} />)
+                                          kw={item.galSearchKeyword} 
+                                          date='' />)
     setTags(tm);
   }, [gData]);
 
@@ -60,7 +79,8 @@ export default function Gallery() {
         </h1>
         <div className='w-full p-5 flex flex-col justify-center items-center lg:flex-row'>
           <div className='w-3/5'>
-            <input ref={searchRef} className='form-input w-full h-12 indent-2 text-xl' type='text' name='search' />
+            <input ref={searchRef} type='text' name='search' 
+                  className='form-input w-full h-12 indent-2 text-xl' onKeyDown={okClick}/>
           </div>
           <div className='flex w-3/5  ml-0 mt-3 lg:ml-2 lg:w-2/5 lg:mt-0'>
             <TailButton caption='확인' color='lime' size='w-1/2' handleClick={okClick} />

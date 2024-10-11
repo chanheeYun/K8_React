@@ -5,10 +5,10 @@ export default function TailCard({ imgUrl, title, content, kw, date}) {
   const mksTag = (str) => {
     if (str === '') return str;
     if (str.includes(',')) {
-      str = str.split(', ').map(item => <p className='w-fit  text-slate-700 bg-slate-200 rounded-xl text-xs px-2 m-1'>
-        {item}</p>);
+      str = str.split(', ').map(item => <span key={item} className='w-fit text-slate-700 bg-slate-200 rounded-xl text-xs px-2 m-1'>
+        {item}</span>);
     } else {
-      str = <p className='w-fit  text-slate-700 bg-slate-200 rounded-xl text-xs px-2 m-1'>{str}</p>
+      str = <span className='w-fit  text-slate-700 bg-slate-200 rounded-xl text-xs px-2 m-1'>{str}</span>
     }
     return str;
   };

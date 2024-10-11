@@ -4,7 +4,7 @@ import TailCard from '../UI/TailCard'
 export default function Festival() {
   const [fData, setFData] = useState();
   const [opt, setOpt] = useState();
-  const [selected, setSelected] = useState("구(군)을 선택하세요.");
+  const [selected, setSelected] = useState("---- 구(군)을 선택하세요 ----");
   const [tags, setTags] = useState();
 
   const getFetchData = async () => {
@@ -22,7 +22,7 @@ export default function Festival() {
     let tmList = data.map(item => item.GUGUN_NM);
     let tmSet = [...new Set(tmList)].sort();
     // console.log(tmSet)
-    let tm = tmSet.map(item => <option value={item} label={item}>{item}</option>);
+    let tm = tmSet.map(item => <option key={item} value={item} label={item}>{item}</option>);
     setOpt(tm)
   };
 
@@ -30,13 +30,14 @@ export default function Festival() {
     // console.log(data)
     if (!data) return;
     let tm = data.map(item => {
-      let n = item.MAIN_TITLE.indexOf('(');
+      let n = item.MAIN_TITLE.indexOf('(') !== -1 ? item.MAIN_TITLE.indexOf('(') : item.MAIN_TITLE.length + 1;
       return <TailCard key={item.UC_SEQ}
-                      imgUrl={item.MAIN_IMG_NORMAL}
-                      title={item.MAIN_TITLE.slice(0, n)}
-                      content={item.TITLE}
-                      kw={item.PLACE} 
-                      date={item.USAGE_DAY_WEEK_AND_TIME}/>
+                        imgUrl={item.MAIN_IMG_NORMAL}
+                        title={item.MAIN_TITLE.slice(0, n)}
+                        content={item.TITLE}
+                        kw={item.PLACE} 
+                        date={item.USAGE_DAY_WEEK_AND_TIME}
+                        />
     });
     setTags(tm);
   };
@@ -53,7 +54,7 @@ export default function Festival() {
   }, [fData]);
 
   useEffect(()=>{
-    if (selected === '구(군)을 선택하세요.') {
+    if (selected === '---- 구(군)을 선택하세요 ----') {
       mksTags(fData);
     } else {
       let tm = fData.filter(item => item.GUGUN_NM === selected);
@@ -70,15 +71,15 @@ export default function Festival() {
   
   //option 선택 되면 교수님 수업 버전
   // const handleSelected2 = () => {
-  //   console.log(gu.current);
+  //   console.log(gu.current.value);
   // };
 
   return (
     <div className='w-10/12 flex flex-col justify-start items-center'>
       <h1 className='main_title mt-5 text-5xl'>부산하면 축제! 축제하면 부산 아입니까~!</h1>
       <select className='form-select w-1/3 mt-10 mb-4' onChange={handleSelected} ref={gu}>
-        <option className='text-gray-300' value='구(군)을 선택하세요.'>
-          구(군)을 선택하세요.
+        <option className='text-gray-300 text-center' value='---- 구(군)을 선택하세요 ----'>
+          ---- 구(군)을 선택하세요 ----
         </option>
         {opt}
       </select>

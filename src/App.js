@@ -18,7 +18,29 @@ import Festival from './12/Festival';
 // import RouteMain from './13/RouteMain';
 
 function App() {
+  const lst = [
+    {name : "시계", path : "MyClock"},
+    {name : "로또", path : "Lotto"},
+    {name : "푸드", path : "FoodBank"},
+    {name : "영화", path : "BoxOffice"},
+    {name : "교통", path : "Traffic"},
+    {name : "관광", path : "Gallery"},
+    {name : "축제", path : "Festival"},
+  ];
 
+  const mksLi = (lst) => {
+    let tm = lst.map(item => {
+      let path = '/' + item.path;
+      return <li key={item.name} className='mx-3 px-2 py-3 
+                                            hover:bg-lime-400 hover:font-bold 
+                                            opacity-90 rounded-full'>
+                <Link to={path}>{item.name}</Link>
+              </li>
+      });
+    return tm;
+  };
+
+  const lis = mksLi(lst);
   return (
     <BrowserRouter>
       <div className='w-full xl:w-10/12 h-screen mx-auto
@@ -30,41 +52,7 @@ function App() {
             REACT 리액트
           </p>
           <ul className='moveBt text-xl text-gray-700 opacity-80 w-1/2 flex justify-end items-center'>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/MyClock'>시계</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/Lotto'>로또</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/FoodBank'>푸드</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/BoxOffice'>영화</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/Traffic'>교통</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/Gallery'>관광</Link>
-            </li>
-            <li className='mx-3 px-2 py-3 
-                          hover:bg-lime-400 hover:font-bold 
-                          opacity-90 rounded-full'>
-              <Link to='/Festival'>축제</Link>
-            </li>
+            {lis}
           </ul>
           <p><Link to='/'><img className='w-20 h-20' src={home} alt='home' /></Link></p>
         </header>
@@ -72,19 +60,19 @@ function App() {
                           flex flex-col items-center 
                           overflow-y-auto'>
           <Routes>
-            <Route path='/' element={<AppHome />} />
-            <Route path='/MyClock' element={<MyClock />} />
             {/* <MyDiv1 /> */}
             {/* <MyList /> */}
+            {/* <MyBox /> */}
+            {/* <MyRef /> */}
+            {/* <RouteMain /> */}
+            <Route path='/' element={<AppHome />} />
+            <Route path='/MyClock' element={<MyClock />} />
             <Route path='/Lotto' element={<Lotto />} />
             <Route path='/FoodBank' element={<FoodMain />} />
             <Route path='/BoxOffice' element={<BoxOffice />} />
-            {/* <MyBox /> */}
             <Route path='/Traffic' element={<Traffic />} />
-            {/* <MyRef /> */}
             <Route path='/Gallery' element={<Gallery />} />
             <Route path='/Festival' element={<Festival />} />
-            {/* <RouteMain /> */}
           </Routes>
         </main>
         <footer className='w-full h-28 mt-2 flex-shrink-0

@@ -81,7 +81,7 @@ function App() {
           <p className='foot text-2xl text-yellow-100 my-4'>
             K-DIGIPAL 윤찬희
           </p>
-          <p className="text-gray-400">© 2024 My Awesome App. All rights reserved.</p>
+          <p className="text-gray-300">© 2024 My Awesome App. All rights reserved.</p>
         </footer>
       </div>
     </BrowserRouter>

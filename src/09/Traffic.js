@@ -47,7 +47,7 @@ export default function Traffic() {
   //대분류선택
   useEffect(()=>{
     if (!selC1) return;
-    let tm = traData.filter(item => item['사고유형대분류'] == selC1);
+    let tm = traData.filter(item => item['사고유형대분류'] === selC1);
     tm = tm.map(item => item['사고유형']);
     tm = [...new Set(tm)]
     
@@ -60,7 +60,7 @@ export default function Traffic() {
   useEffect(()=>{
     if (!selC2) return;
     const infoKey = ['사고건수', '사망자수', '중상자수', '경상자수', '부상신고자수'];
-    let tm = traData.filter(item => item['사고유형대분류'] == selC1 && item['사고유형'] == selC2)[0];
+    let tm = traData.filter(item => item['사고유형대분류'] === selC1 && item['사고유형'] === selC2)[0];
     tm = infoKey.map(info => [info, tm[info]]);
     // console.log(tm);
     let tm_info = tm.map(item => <div key={item[0]} className='my-5'>

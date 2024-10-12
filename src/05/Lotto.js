@@ -1,6 +1,6 @@
 import TailButton from '../UI/TailButton'
 import TailBall from './TailBall'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Lotto() {
    //state 변수는 useState Hook으로 만듦

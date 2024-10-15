@@ -15,6 +15,8 @@ import Traffic from './09/Traffic';
 // import MyRef from './10/MyRef';
 import Gallery from './11/Gallery';
 import Festival from './12/Festival';
+import FcstList from './14/FcstList';
+import Fcst from './14/Fcst';
 // import RouteMain from './13/RouteMain';
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
     {name : "교통", path : "Traffic"},
     {name : "관광", path : "Gallery"},
     {name : "축제", path : "Festival"},
+    {name : "기상", path : "Fcst"},
   ];
 
   const mksLi = (lst) => {
@@ -73,6 +76,8 @@ function App() {
             <Route path='/Traffic' element={<Traffic />} />
             <Route path='/Gallery' element={<Gallery />} />
             <Route path='/Festival' element={<Festival />} />
+            <Route path='/Fcst' element={<Fcst />} />
+            <Route path='/FcstList' element={<FcstList />} />
           </Routes>
         </main>
         <footer className='w-full h-28 mt-2 flex-shrink-0

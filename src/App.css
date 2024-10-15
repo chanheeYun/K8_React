@@ -77,6 +77,10 @@
   font-style: italic;
 }
 
+.weather {
+  font-family: 'TTLaundryGothicB';
+}
+
 @font-face {
   font-family: 'BMJUA';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
@@ -109,5 +113,12 @@
   font-family: '양진체';
   src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TTLaundryGothicB';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
 }

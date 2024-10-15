@@ -4,8 +4,8 @@ import TailCard from '../UI/TailCard'
 export default function Festival() {
   const [fData, setFData] = useState();
   const [opt, setOpt] = useState();
-  const [selected, setSelected] = useState("---- 구(군)을 선택하세요 ----");
   const [tags, setTags] = useState();
+  const [selected, setSelected] = useState("---- 구(군)을 선택하세요 ----");
 
   const getFetchData = async () => {
     const apiKey = process.env.REACT_APP_API_KEY;

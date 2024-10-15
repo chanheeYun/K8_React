@@ -6,7 +6,7 @@ export default function TrafficNav({div, c, sel, setSel}) {
   const tags = c.map(item => <TailButton
                                 key={item}
                                 caption={item}
-                                color={item == sel ? 'red' : 'green'}
+                                color={item === sel ? 'red' : 'green'}
                                 size='w-auto'
                                 handleClick={() => setSel(item)} />
   );

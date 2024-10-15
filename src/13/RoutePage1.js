@@ -7,7 +7,7 @@ export default function RoutePage1() {
   return (
     <div className='text-3xl'>
       RoutePage1
-      {item} :  {item2}
+      {item} : {item2}
     </div>
   )
 }

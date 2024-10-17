@@ -1,22 +1,33 @@
 import { useEffect, useState, useRef } from 'react';
 import TailButton from '../UI/TailButton2';
+import { AtomN, AtomN2 } from './AtomN';
+import { useRecoilState } from 'recoil';
 
 export default function Recoil3({x3, y3}) {
   const [x, setX] = useState(x3); 
   const [y, setY] = useState(y3);
   const inRef = useRef();
 
+  const [n, setN] = useRecoilState(AtomN);
+  const [, setN2] = useRecoilState(AtomN2);
+  //쓸 일이 없다면 살짝 지워도 돼
   const handleUp = () => {
     setX(x + 1);
+    setN(n + 1);
   };
 
   const handleDown = () => {
     setX(x - 1);
+    setN(n - 1);
   };
 
   useEffect(()=>{
     setY(parseInt(inRef.current.value) * x)
   }, [x]);
+
+  useEffect(()=>{
+    setN2(parseInt(inRef.current.value) * n);
+  }, [n]);
    
   return (
     <div className='w-full/12 h-4/5 flex flex-col 

@@ -36,8 +36,8 @@ export default function FcstList() {
       setWData(data.response.body.items.item)
     } catch (err) {
       console.log(err)
-      // alert('해당 날짜의 예보 정보를 찾을 수 없습니다.')
-      // navigate('/Fcst');
+      alert('해당 날짜의 예보 정보를 찾을 수 없습니다.')
+      navigate('/Fcst');
     }
   }, [gubun, dt, time, x, y, navigate]);
 

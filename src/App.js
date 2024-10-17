@@ -18,7 +18,7 @@ import Festival from './12/Festival';
 // import RouteMain from './13/RouteMain';
 import FcstList from './14/FcstList';
 import Fcst from './14/Fcst';
-import Recoil1 from './15/Recoil1';
+import RecoilMain from './15/RecoilMain';
 
 function App() {
   const lst = [
@@ -79,7 +79,7 @@ function App() {
             <Route path='/Festival' element={<Festival />} />
             <Route path='/Fcst' element={<Fcst />} />
             <Route path='/FcstList' element={<FcstList />} />
-            <Route path='/Recoil1' element={<Recoil1 />} />
+            <Route path='/Recoil' element={<RecoilMain />} />
           </Routes>
         </main>
         <footer className='w-full h-28 mt-2 flex-shrink-0

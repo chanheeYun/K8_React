@@ -18,7 +18,9 @@ import Festival from './12/Festival';
 // import RouteMain from './13/RouteMain';
 import FcstList from './14/FcstList';
 import Fcst from './14/Fcst';
-import RecoilMain from './15/RecoilMain';
+// import RecoilMain from './15/RecoilMain';
+import RecoilMain from './15/15-1/RMain';
+import Rest from './16/Rest';
 
 function App() {
   const lst = [
@@ -30,6 +32,7 @@ function App() {
     {name : "관광", path : "Gallery"},
     {name : "축제", path : "Festival"},
     {name : "기상", path : "Fcst"},
+    {name : "DB", path : "Rest"},
   ];
 
   const mksLi = (lst) => {
@@ -80,6 +83,7 @@ function App() {
             <Route path='/Fcst' element={<Fcst />} />
             <Route path='/FcstList' element={<FcstList />} />
             <Route path='/Recoil' element={<RecoilMain />} />
+            <Route path='/Rest' element={<Rest />} />
           </Routes>
         </main>
         <footer className='w-full h-28 mt-2 flex-shrink-0

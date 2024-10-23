@@ -9,7 +9,7 @@ export default function Recoil3({x3, y3}) {
   const inRef = useRef();
 
   const [n, setN] = useRecoilState(AtomN);
-  const [, setN2] = useRecoilState(AtomN2);
+  const [m, setM] = useRecoilState(AtomN2);
   //쓸 일이 없다면 살짝 지워도 돼
   const handleUp = () => {
     setX(x + 1);
@@ -26,14 +26,14 @@ export default function Recoil3({x3, y3}) {
   }, [x]);
 
   useEffect(()=>{
-    setN2(parseInt(inRef.current.value) * n);
+    setM(parseInt(inRef.current.value) * n);
   }, [n]);
    
   return (
     <div className='w-full/12 h-4/5 flex flex-col 
                     mt-16 p-5 mx-2
                     bg-lime-200 text-black font-bold'>
-      recoil3 (x = {x}, y = {y})
+      recoil3 (x = {x}, y = {y}, n = {n}, m = {m})
 
       <div className='mt-10 grid grid-cols-1 md:grid-cols-3 gap-2'>
         <input type='number' className='form-input text-lg' defaultValue={2} 

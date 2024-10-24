@@ -32,7 +32,7 @@ function App() {
     {name : "관광", path : "Gallery"},
     {name : "축제", path : "Festival"},
     {name : "기상", path : "Fcst"},
-    {name : "DB", path : "Rest"},
+    {name : "D B", path : "Rest"},
   ];
 
   const mksLi = (lst) => {
@@ -48,6 +48,7 @@ function App() {
   };
 
   const lis = mksLi(lst);
+  
   return (
     <BrowserRouter>
       <div className='w-full xl:w-10/12 h-screen mx-auto

@@ -6,7 +6,11 @@ export default function Rest() {
   const txt2Ref = useRef();
   const [pData, setPData] = useState([]);
   const [tags, setTags] = useState();
-  
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [isUpdateId, setIsUpdateId] = useState('');
+
+  //서버를 실행시켜야 정상 작동한다
+  //restfull endpoint 주소 - 컴포넌트 내에서 사용된다
   const url = 'http://localhost:3005/posts';
 
   const getPData = async () => {
@@ -16,24 +20,79 @@ export default function Rest() {
     setPData(data);
   };
 
-  const handleDelete = () => {};
-  const handleCorrect = () => {};
+  const handlePost = async () => {
+    if (txt1Ref.current.value === '') {
+      alert('제목을 입력하세요.');
+      txt1Ref.current.focus();
+      return;
+    }
+    if (txt2Ref.current.value === '') {
+      alert('작성자를 입력하세요.')
+      txt2Ref.current.focus();
+      return;
+    }
 
-  const mksTags = useCallback(() => {
-    let tm = pData.map(item => <tr className='text-center' key={item.id}>
-                                  <td className='text-2xl'>{item.title}</td>
-                                  <td className='text-base'>{item.author}</td>
-                                  <td><TailButton caption="🗑"
-                                              color="gray"
-                                              handleClick={handleDelete}
-                                              size='w-auto' /></td>
-                                  <td><TailButton caption="🖋"
-                                              color="gray"
-                                              handleClick={handleCorrect} 
-                                              size='w-auto' /></td>
-                                </tr>);
-    setTags(tm);
+    const postData = {
+      title : txt1Ref.current.value,
+      author : txt2Ref.current.value
+    };
+
+    const resp = await fetch(url, {
+      method : 'POST',
+      headers : {'Content-Type' : 'application/json'},
+      body : JSON.stringify(postData)
+    });
+
+    //post 방식으로 fetch하게 되면 새로 입력된 데이터만 resp로 반환된다
+    const data = await resp.json();
+    setPData([...pData, data]);
+
+    txt1Ref.current.value = '';
+    txt1Ref.current.focus();
+    txt2Ref.current.value = '';
+  };
+
+  const handleDelete = useCallback(async (id) => {
+    //삭제된 데이터 반환
+    await fetch(`${url}/${id}`, {
+      method : 'DELETE'
+    });
+
+    setPData(pData.filter(item => item.id !== id));
   }, [pData]);
+
+  const handleCorrect = useCallback((item) => {
+    if (isUpdate) return;
+    txt1Ref.current.value = item.title;
+    txt2Ref.current.value = item.author;
+    
+    setIsUpdate(true);
+    setIsUpdateId(item.id);
+  }, [isUpdate]);
+
+  const handlePut = async () => {
+    const putData = {
+      id : isUpdateId,
+      title : txt1Ref.current.value,
+      author : txt2Ref.current.value
+    };
+
+    const resp = await fetch(`${url}/${isUpdateId}`, {
+      method : 'PUT', 
+      headers : {'Content-Type' : 'application/json'},
+      body : JSON.stringify(putData)
+    });
+
+    const data = await resp.json();
+    setPData(pData.map(item => item.id === isUpdateId ? data : item));
+
+    txt1Ref.current.value = '';
+    txt1Ref.current.focus();
+    txt2Ref.current.value = '';
+
+    setIsUpdate(false);
+    setIsUpdateId('');
+  };
 
   useEffect(()=>{
     getPData();
@@ -41,8 +100,28 @@ export default function Rest() {
 
   useEffect(()=>{
     if (!pData) return;
-    mksTags();
-  }, [pData, mksTags]);
+    let tm = pData.map(item => <tr className='text-center border-2' key={item.id}>
+                                <td className='text-2xl py-0.5'>{item.title}</td>
+                                <td className='text-base py-0.5'>{item.author}</td>
+                                <td className='py-0.5'>
+                                  <TailButton caption="🗑"
+                                            color="gray"
+                                            handleClick={() => handleDelete(item.id)}
+                                            size='w-auto' /></td>
+                                <td className='py-0.5'>
+                                  <TailButton caption="🖋"
+                                            color="gray"
+                                            handleClick={() => handleCorrect(item)} 
+                                            size='w-auto' /></td>
+                              </tr>);
+    setTags(tm);
+    console.log(pData)
+  }, [pData, handleCorrect, handleDelete]);
+
+  //컴포넌트가 재랜더링 될 때 마다 실행
+  // useEffect(()=>{
+  //   console.log(1)
+  // });
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
@@ -54,18 +133,18 @@ export default function Rest() {
           <input id="txt1"
             type="text"
             className="form-input w-full"
-            inRef={txt1Ref} />
+            ref={txt1Ref} />
         </div>
         <label htmlFor="txt2" className="my-2">작성자</label>
         <div className="flex">
           <input id="txt2"
             type="text"
             className="form-input w-full"
-            inRef={txt2Ref} />
+            ref={txt2Ref} />
         </div>
-        <TailButton caption="입력"
+        <TailButton caption={isUpdate ? '수정' : '입력'}
                     color="green"
-                    handleClick='' 
+                    handleClick={isUpdate ? handlePut : handlePost} 
                     size='auto' />
       </div>
       <table

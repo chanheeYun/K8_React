@@ -1,3 +1,4 @@
+import axios from 'axios';
 import TailButton from "../UI/TailButton2";
 import { useState, useEffect, useRef, useCallback } from "react";
 
@@ -14,9 +15,11 @@ export default function Rest() {
   const url = 'http://localhost:3005/posts';
 
   const getPData = async () => {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    console.log(data)
+    // const resp = await fetch(url);
+    // const data = await resp.json();
+    // console.log(data)
+    const { data } = await axios.get(url);
+    
     setPData(data);
   };
 
@@ -37,14 +40,16 @@ export default function Rest() {
       author : txt2Ref.current.value
     };
 
-    const resp = await fetch(url, {
-      method : 'POST',
-      headers : {'Content-Type' : 'application/json'},
-      body : JSON.stringify(postData)
-    });
+    // const resp = await fetch(url, {
+    //   method : 'POST',
+    //   headers : {'Content-Type' : 'application/json'},
+    //   body : JSON.stringify(postData)
+    // });
 
-    //post 방식으로 fetch하게 되면 새로 입력된 데이터만 resp로 반환된다
-    const data = await resp.json();
+    // //post 방식으로 fetch하게 되면 새로 입력된 데이터만 resp로 반환된다
+    // const data = await resp.json();
+    const { data } = await axios.post(url, postData);
+
     setPData([...pData, data]);
 
     txt1Ref.current.value = '';
@@ -54,9 +59,10 @@ export default function Rest() {
 
   const handleDelete = useCallback(async (id) => {
     //삭제된 데이터 반환
-    await fetch(`${url}/${id}`, {
-      method : 'DELETE'
-    });
+    // await fetch(`${url}/${id}`, {
+    //   method : 'DELETE'
+    // });
+    await axios.delete(`${url}/${id}`);
 
     setPData(pData.filter(item => item.id !== id));
   }, [pData]);
@@ -77,13 +83,15 @@ export default function Rest() {
       author : txt2Ref.current.value
     };
 
-    const resp = await fetch(`${url}/${isUpdateId}`, {
-      method : 'PUT', 
-      headers : {'Content-Type' : 'application/json'},
-      body : JSON.stringify(putData)
-    });
+    // const resp = await fetch(`${url}/${isUpdateId}`, {
+    //   method : 'PUT', 
+    //   headers : {'Content-Type' : 'application/json'},
+    //   body : JSON.stringify(putData)
+    // });
 
-    const data = await resp.json();
+    // const data = await resp.json();
+    const { data } = await axios.put(`${url}/${isUpdateId}`, putData);
+
     setPData(pData.map(item => item.id === isUpdateId ? data : item));
 
     txt1Ref.current.value = '';

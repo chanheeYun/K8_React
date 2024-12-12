@@ -56,13 +56,13 @@ function App() {
         <header className='w-full h-28 p-5
                             flex justify-between items-center
                             bg-lime-100'>
-          <p className='title text-7xl text-emerald-950 mt-1'>
+          <p className='title text-7xl text-emerald-950 mt-1 w-5/12'>
             REACT 리액트
           </p>
-          <ul className='moveBt text-xl text-gray-700 opacity-80 w-1/2 flex justify-end items-center'>
+          <ul className='moveBt text-xl text-gray-700 opacity-80 w-7/12 flex justify-end items-center'>
             {lis}
           </ul>
-          <p><Link to='/'><img className='w-20 h-20' src={home} alt='home' /></Link></p>
+          <p><Link to='/'><img className='w-16 h-16' src={home} alt='home' /></Link></p>
         </header>
         <main className='w-full flex-grow 
                           flex flex-col items-center 
